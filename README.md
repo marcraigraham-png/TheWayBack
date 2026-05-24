@@ -1,27 +1,22 @@
-# The Way Back Resources Site
+# The Way Back Website
 
-This is a deploy-ready Vite + React site for the companion resources page for *The Way Back*.
+A Vite + React website for *The Way Back* by Morpheus Black.
 
-## What is included
+## Pages
 
-- React/Vite website
-- Free resource download cards
-- Companion Kit email signup placeholder
-- Join the Brotherhood section
-- PDF downloads in `public/downloads/`
+- `/` - Main book sales page
+- `/resources` - Free companion resources and email signup
+- `/brotherhood` - Brotherhood / Discord community landing page
+- `/privacy` - Privacy policy placeholder
+- `/terms` - Terms and disclaimer placeholder
+- `/contact` - Contact placeholder
 
-## Local setup
-
-1. Install Node.js.
-2. Open a terminal in this folder.
-3. Run:
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
-
-The site will open locally at the URL shown in your terminal.
 
 ## Build
 
@@ -31,30 +26,22 @@ npm run build
 
 ## Deploy to Vercel
 
-1. Create a GitHub account if needed.
-2. Create a new GitHub repository.
-3. Upload these files to the repository.
-4. Go to Vercel and choose "Add New Project".
-5. Import the GitHub repository.
-6. Vercel should detect Vite automatically.
-7. Click Deploy.
+Import this repository into Vercel. It should detect Vite automatically.
 
 ## Important placeholders to replace
 
-### Email form
+- Buy on Amazon button
+- PDF Edition button
+- MailerLite signup form
+- Brotherhood / Discord / payment link
+- Privacy Policy text
+- Terms and Disclaimer text
+- Contact email
 
-The current form shows an alert. Replace `handleSubmit` in `src/App.jsx` with your MailerLite embedded form or form action.
+## Downloads
 
-### Brotherhood button
+The PDF resources are in `public/downloads`.
 
-The Join the Brotherhood button currently links to `#`. Replace it with your Discord, waitlist, payment, or Brotherhood page URL.
+## Cover
 
-### Legal links
-
-Add Privacy Policy, Terms, Disclaimer, and Contact links in the footer before launch.
-
-## Suggested KDP link wording
-
-Free Companion Resources  
-Printable worksheets and companion materials for *The Way Back* are available at:  
-`https://yourdomain.com/resources`
+The cover image is in `public/images/the-way-back-cover.png`.
