@@ -17,12 +17,6 @@ import {
 
 const downloads = [
   {
-    title: 'Full Companion Kit',
-    description: 'The complete printable bundle in one PDF.',
-    href: '/downloads/the_way_back_companion_kit_full_bundle.pdf',
-    icon: FileText,
-  },
-  {
     title: '30-Day Protocol Tracker',
     description: 'Track daily movement, private promises, emotional ledgers, and island-building.',
     href: '/downloads/way_back_30_day_protocol_tracker.pdf',
@@ -125,9 +119,10 @@ function HomePage() {
             <h1>The Way Back</h1>
             <p className="subtitle">A field guide for reclaiming your worth, rebuilding your life, and becoming the man who no longer abandons himself.</p>
             <p className="lede">For men who are tired of chasing approval, bleeding their worth into women, calling fear maturity, and living like strangers to their own strength.</p>
-            <div className="buttonRow">
-              <Button variant="gold" href="#buy">Buy the Book <ArrowRight size={18} /></Button>
-              <Button variant="outline" href="/resources">Free Companion Resources</Button>
+            <div className="buttonRow heroButtonRow">
+              <Button variant="gold" href="#amazon-coming-soon">Buy Now on Amazon <ArrowRight size={18} /></Button>
+              <Button variant="outline" href="#pdf-checkout">Get the PDF</Button>
+              <Button variant="outline" href="/resources">Free Resources</Button>
               <Button variant="outline" href="/brotherhood">Join the Brotherhood</Button>
             </div>
           </motion.div>
@@ -230,13 +225,31 @@ function HomePage() {
             <div>
               <p className="smallCaps">Get the Book</p>
               <h2>Start walking the way back.</h2>
-              <p>Buy the Kindle edition on Amazon, or get the direct PDF edition when it becomes available.</p>
+              <p>Buy the Kindle edition on Amazon when the book is live, or get the direct PDF edition through the checkout link.</p>
             </div>
             <div className="buyButtons">
-              <Button variant="gold" href="#">Buy on Amazon</Button>
-              <Button variant="outline" href="#">Get the PDF Edition</Button>
-              <Button variant="outline" href="/resources">Download Free Resources</Button>
+              <Button variant="gold" href="#amazon-coming-soon">Buy Now on Amazon</Button>
+              <Button variant="outline" href="#pdf-checkout">Get the PDF</Button>
+              <Button variant="outline" href="/resources">Free Resources</Button>
+              <Button variant="outline" href="/brotherhood">Join the Brotherhood</Button>
             </div>
+          </div>
+        </section>
+
+        <section id="pdf-checkout" className="section container compact">
+          <div className="checkoutNote">
+            <p className="smallCaps">Direct PDF Edition</p>
+            <h2>PDF checkout coming soon.</h2>
+            <p>Replace this placeholder with your Payhip, Gumroad, Lemon Squeezy, or Stripe checkout link once the direct PDF edition is ready. The checkout should collect the buyer’s email and deliver the PDF automatically after payment.</p>
+            <Button variant="gold" href="#">Get the PDF</Button>
+          </div>
+        </section>
+
+        <section id="amazon-coming-soon" className="section container compact">
+          <div className="checkoutNote subdued">
+            <p className="smallCaps">Amazon Edition</p>
+            <h2>Amazon link coming soon.</h2>
+            <p>When the Kindle edition is live, replace the Amazon buttons with your official Amazon product page link.</p>
           </div>
         </section>
       </main>
@@ -287,7 +300,7 @@ function ResourcesPage() {
           <div className="sectionIntro">
             <p className="smallCaps">Reader Resources</p>
             <h2>Use these tools as you work through the book.</h2>
-            <p>These materials support the book directly. You can download the worksheets below, or receive the full printable PDF bundle by email.</p>
+            <p>These materials support the book directly. You can download selected worksheets below, or receive the full printable PDF bundle by email.</p>
           </div>
           <div className="resourceGrid">
             {downloads.map((resource, index) => {
