@@ -47,7 +47,7 @@ const downloads = [
     icon: BookOpen,
   },
   {
-    title: 'Brotherhood & Mission Prompts',
+    title: 'Build the Island: Mission and Brotherhood',
     description: 'Prompts for rebuilding direction, male friendship, and purposeful momentum.',
     href: '/downloads/way_back_brotherhood_mission_prompts.pdf',
     icon: Users,
@@ -86,28 +86,88 @@ function Button({ children, variant = 'primary', href, type = 'button' }) {
 function Nav() {
   const [open, setOpen] = useState(false)
   const navLinks = [
-    ['Book', '/'],
-    ['Resources', '/resources'],
-    ['Brotherhood', '/brotherhood'],
+    ['Home', '/'],
+    ['The Way Back', '/the-way-back'],
+    ['Resources', '/the-way-back/resources'],
+    ['Brotherhood', '/the-way-back/brotherhood'],
     ['Contact', '/contact'],
   ]
   return (
     <nav className="nav">
       <div className="container navInner">
-        <a className="brand" href="/"><Compass size={20} /> The Way Back</a>
+        <a className="brand" href="/"><Compass size={20} /> Morpheus Black</a>
         <button className="menuBtn" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
         <div className={open ? 'navLinks navLinksOpen' : 'navLinks'}>
           {navLinks.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
-          <a className="navCta" href="/resources">Free Companion Kit</a>
+          <a className="navCta" href="/the-way-back/resources">Free Resources</a>
         </div>
       </div>
     </nav>
   )
 }
 
-function HomePage() {
+function AuthorHomePage() {
+  return (
+    <div className="site">
+      <Nav />
+      <header className="bookHero">
+        <div className="heroGlow" />
+        <div className="container bookHeroGrid">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="heroText">
+            <div className="eyebrow"><Compass size={16} /> Author · Brotherhood · The Way Back</div>
+            <h1>Morpheus Black</h1>
+            <p className="subtitle">Books, resources, and brotherhood for men who refuse to stay lost.</p>
+            <p className="lede">Morpheus Black writes about masculinity, self-respect, emotional discipline, relationships, and the long road back to yourself.</p>
+            <div className="buttonRow heroButtonRow">
+              <Button variant="gold" href="/the-way-back">Explore The Way Back <ArrowRight size={18} /></Button>
+              <Button variant="outline" href="/the-way-back/resources">Free Resources</Button>
+              <Button variant="outline" href="/the-way-back/brotherhood">Join the Brotherhood</Button>
+              <Button variant="outline" href="/contact">Contact</Button>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.1 }} className="coverWrap">
+            <img src="/images/the-way-back-cover.png" alt="The Way Back book cover" className="bookCover" />
+          </motion.div>
+        </div>
+      </header>
+
+      <main>
+        <section className="section container">
+          <div className="sectionIntro centered">
+            <p className="smallCaps">Current Book</p>
+            <h2>The Way Back</h2>
+            <p>A roadmap for men who refuse to stay lost. Start with the book, use the resources, then go deeper inside the Brotherhood.</p>
+          </div>
+          <div className="threeGrid">
+            <article className="featureCard">
+              <BookOpen size={30} />
+              <h3>Read the Book</h3>
+              <p>Begin with the complete roadmap: shame, approval, women, desire, boundaries, leadership, intimacy, and legacy.</p>
+              <a className="textLink" href="/the-way-back">View the book page <ArrowRight size={15} /></a>
+            </article>
+            <article className="featureCard">
+              <Download size={30} />
+              <h3>Use the Resources</h3>
+              <p>Get worksheets for the 30-Day Protocol, Emotional Ledger, Island Scorecard, Relationship Standards, and Personal Code.</p>
+              <a className="textLink" href="/the-way-back/resources">Open resources <ArrowRight size={15} /></a>
+            </article>
+            <article className="featureCard">
+              <Users size={30} />
+              <h3>Join the Brotherhood</h3>
+              <p>Go deeper with weekly guidance, private discussion, Q&A threads, and accountability around the work.</p>
+              <a className="textLink" href="/the-way-back/brotherhood">Learn more <ArrowRight size={15} /></a>
+            </article>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+function BookPage() {
   return (
     <div className="site">
       <Nav />
@@ -120,10 +180,10 @@ function HomePage() {
             <p className="subtitle">A field guide for reclaiming your worth, rebuilding your life, and becoming the man who no longer abandons himself.</p>
             <p className="lede">For men who are tired of chasing approval, bleeding their worth into women, calling fear maturity, and living like strangers to their own strength.</p>
             <div className="buttonRow heroButtonRow">
-              <Button variant="gold" href="#amazon-coming-soon">Buy Now on Amazon <ArrowRight size={18} /></Button>
-              <Button variant="outline" href="#pdf-checkout">Get the PDF</Button>
-              <Button variant="outline" href="/resources">Free Resources</Button>
-              <Button variant="outline" href="/brotherhood">Join the Brotherhood</Button>
+              <Button variant="gold" href="#">Buy Now on Amazon <ArrowRight size={18} /></Button>
+              <Button variant="outline" href="/the-way-back/pdf">Get the PDF</Button>
+              <Button variant="outline" href="/the-way-back/resources">Free Resources</Button>
+              <Button variant="outline" href="/the-way-back/brotherhood">Join the Brotherhood</Button>
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.1 }} className="coverWrap">
@@ -219,39 +279,6 @@ function HomePage() {
             <p>“A woman can add beauty to your life. But she cannot become the ground beneath your feet. That ground is yours to build.”</p>
           </div>
         </section>
-
-        <section id="buy" className="section container">
-          <div className="buyBox">
-            <div>
-              <p className="smallCaps">Get the Book</p>
-              <h2>Start walking the way back.</h2>
-              <p>Buy the Kindle edition on Amazon when the book is live, or get the direct PDF edition through the checkout link.</p>
-            </div>
-            <div className="buyButtons">
-              <Button variant="gold" href="#amazon-coming-soon">Buy Now on Amazon</Button>
-              <Button variant="outline" href="#pdf-checkout">Get the PDF</Button>
-              <Button variant="outline" href="/resources">Free Resources</Button>
-              <Button variant="outline" href="/brotherhood">Join the Brotherhood</Button>
-            </div>
-          </div>
-        </section>
-
-        <section id="pdf-checkout" className="section container compact">
-          <div className="checkoutNote">
-            <p className="smallCaps">Direct PDF Edition</p>
-            <h2>PDF checkout coming soon.</h2>
-            <p>Replace this placeholder with your Payhip, Gumroad, Lemon Squeezy, or Stripe checkout link once the direct PDF edition is ready. The checkout should collect the buyer’s email and deliver the PDF automatically after payment.</p>
-            <Button variant="gold" href="#">Get the PDF</Button>
-          </div>
-        </section>
-
-        <section id="amazon-coming-soon" className="section container compact">
-          <div className="checkoutNote subdued">
-            <p className="smallCaps">Amazon Edition</p>
-            <h2>Amazon link coming soon.</h2>
-            <p>When the Kindle edition is live, replace the Amazon buttons with your official Amazon product page link.</p>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
@@ -279,8 +306,7 @@ function ResourcesPage() {
             <p className="subtitle">Companion worksheets for men who refuse to stay lost.</p>
             <p className="lede">Use these printable tools alongside the book to complete the 30-Day Way Back Protocol, build your island, track your emotional patterns, and turn insight into action.</p>
             <div className="buttonRow">
-              <Button href="#resources">View the resources <ArrowRight size={18} /></Button>
-              <Button variant="outline" href="#email-kit">Get the PDF bundle by email</Button>
+              <Button variant="gold" href="#email-kit">Get the Full PDF Bundle <ArrowRight size={18} /></Button>
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.1 }} className="kitCard">
@@ -300,7 +326,7 @@ function ResourcesPage() {
           <div className="sectionIntro">
             <p className="smallCaps">Reader Resources</p>
             <h2>Use these tools as you work through the book.</h2>
-            <p>These materials support the book directly. You can download selected worksheets below, or receive the full printable PDF bundle by email.</p>
+            <p>Download selected worksheets below, or receive the full printable PDF bundle by email.</p>
           </div>
           <div className="resourceGrid">
             {downloads.map((resource, index) => {
@@ -321,8 +347,7 @@ function ResourcesPage() {
           <div className="container split">
             <div>
               <p className="smallCaps">Printable Bundle</p>
-              <h2>Want the full Companion Kit sent to your inbox?</h2>
-              <p>Enter your details and receive the printable PDF bundle for the 30-Day Way Back Protocol. You may also receive occasional updates, essays, and future resources related to the book. Unsubscribe anytime.</p>
+              <h2>Get the full Companion Kit sent to your inbox.</h2>
               <p className="finePrint">This signup is optional. The resources on this page are provided to support readers of the book.</p>
             </div>
             <form className="signupCard" onSubmit={handleSubmit}>
@@ -362,7 +387,7 @@ function BrotherhoodSection() {
           <h2>Join the Brotherhood.</h2>
           <p>The book gives you the map. The Brotherhood gives you a place to walk it with other men.</p>
           <p className="muted">This is a private space for men working through The Way Back: discipline, emotional control, dating, relationships, leadership, fatherhood, and building the island.</p>
-          <Button href="/brotherhood">Join the Brotherhood <ArrowRight size={18} /></Button>
+          <Button href="/the-way-back/brotherhood">Join the Brotherhood <ArrowRight size={18} /></Button>
         </div>
         <div className="insideCard">
           <h3>Inside the Brotherhood</h3>
@@ -387,7 +412,7 @@ function BrotherhoodPage() {
           <p className="subtitle">A private community for men building discipline, emotional control, clean relationships, and a stronger island.</p>
           <div className="buttonRow centeredButtons">
             <Button variant="gold" href="#join">Join the Waitlist</Button>
-            <Button variant="outline" href="/resources">Get the Free Resources</Button>
+            <Button variant="outline" href="/the-way-back/resources">Get the Free Resources</Button>
           </div>
         </div>
       </header>
@@ -413,12 +438,31 @@ function BrotherhoodPage() {
   )
 }
 
+function PdfCheckoutPage() {
+  return (
+    <div className="site">
+      <Nav />
+      <header className="pageHero">
+        <div className="container narrow">
+          <p className="smallCaps">Direct PDF Edition</p>
+          <h1>PDF checkout coming soon.</h1>
+          <p className="subtitle">This page will connect to your Payhip, Gumroad, Lemon Squeezy, or Stripe checkout once the direct PDF edition is ready.</p>
+          <div className="buttonRow centeredButtons">
+            <Button variant="gold" href="#">Get the PDF</Button>
+            <Button variant="outline" href="/the-way-back">Back to the Book</Button>
+          </div>
+        </div>
+      </header>
+    </div>
+  )
+}
+
 function SimplePage({ title, children }) {
   return (
     <div className="site">
       <Nav />
       <main className="section container legalPage">
-        <p className="smallCaps">The Way Back</p>
+        <p className="smallCaps">Morpheus Black</p>
         <h1>{title}</h1>
         <div className="legalContent">{children}</div>
       </main>
@@ -430,7 +474,7 @@ function SimplePage({ title, children }) {
 function Footer() {
   return (
     <footer>
-      <p>© {new Date().getFullYear()} The Way Back. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} Morpheus Black. All rights reserved.</p>
       <p><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a></p>
     </footer>
   )
@@ -439,8 +483,10 @@ function Footer() {
 export default function App() {
   const path = window.location.pathname
 
-  if (path.startsWith('/resources')) return <ResourcesPage />
-  if (path.startsWith('/brotherhood')) return <BrotherhoodPage />
+  if (path.startsWith('/the-way-back/resources') || path.startsWith('/resources')) return <ResourcesPage />
+  if (path.startsWith('/the-way-back/brotherhood') || path.startsWith('/brotherhood')) return <BrotherhoodPage />
+  if (path.startsWith('/the-way-back/pdf')) return <PdfCheckoutPage />
+  if (path.startsWith('/the-way-back')) return <BookPage />
   if (path.startsWith('/privacy')) return (
     <SimplePage title="Privacy Policy">
       <p>Replace this placeholder with your full privacy policy before collecting email addresses.</p>
@@ -456,9 +502,9 @@ export default function App() {
   if (path.startsWith('/contact')) return (
     <SimplePage title="Contact">
       <p>Replace this placeholder with your contact email or contact form.</p>
-      <p>Example: support@thewaybackbook.com</p>
+      <p>Example: support@morpheusblack.com</p>
     </SimplePage>
   )
 
-  return <HomePage />
+  return <AuthorHomePage />
 }

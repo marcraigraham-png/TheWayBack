@@ -1,47 +1,26 @@
-# The Way Back Website
+# Morpheus Black / The Way Back Website
 
-A Vite + React website for *The Way Back* by Morpheus Black.
+Deploy this Vite React site on Vercel.
 
-## Pages
+## Routes
 
-- `/` - Main book sales page
-- `/resources` - Free companion resources and email signup
-- `/brotherhood` - Brotherhood / Discord community landing page
-- `/privacy` - Privacy policy placeholder
-- `/terms` - Terms and disclaimer placeholder
-- `/contact` - Contact placeholder
+- `/` — Morpheus Black homepage
+- `/the-way-back` — book sales page
+- `/the-way-back/resources` — companion resources page
+- `/the-way-back/brotherhood` — Brotherhood page
+- `/the-way-back/pdf` — placeholder for direct PDF checkout
+- `/privacy` — privacy policy placeholder
+- `/terms` — terms/disclaimer placeholder
+- `/contact` — contact placeholder
 
-## Setup
+Legacy aliases `/resources` and `/brotherhood` still work and display the same pages.
 
-```bash
-npm install
-npm run dev
-```
+## Before Launch
 
-## Build
+Replace placeholder links for:
 
-```bash
-npm run build
-```
-
-## Deploy to Vercel
-
-Import this repository into Vercel. It should detect Vite automatically.
-
-## Important placeholders to replace
-
-- Buy on Amazon button
-- PDF Edition button
-- MailerLite signup form
-- Brotherhood / Discord / payment link
-- Privacy Policy text
-- Terms and Disclaimer text
-- Contact email
-
-## Downloads
-
-The PDF resources are in `public/downloads`.
-
-## Cover
-
-The cover image is in `public/images/the-way-back-cover.png`.
+- Amazon book page
+- PDF checkout page
+- MailerLite form
+- Brotherhood waitlist / Discord / paid community
+- Privacy policy, terms, and contact details
