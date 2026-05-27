@@ -77,6 +77,10 @@ const bookLessons = [
   'Lead in love without controlling or disappearing.',
 ]
 
+const AMAZON_BOOK_LINK = 'https://www.amazon.com/dp/B0H2YSPHKY'
+
+const MAILERLITE_FORM_URL = 'https://preview.mailerlite.io/forms/2384693/188645658661487982/share'
+
 function Button({ children, variant = 'primary', href, type = 'button' }) {
   const className = variant === 'outline' ? 'btn btn-outline' : variant === 'gold' ? 'btn btn-gold' : 'btn btn-primary'
   if (href) return <a className={className} href={href}>{children}</a>
@@ -86,16 +90,14 @@ function Button({ children, variant = 'primary', href, type = 'button' }) {
 function Nav() {
   const [open, setOpen] = useState(false)
   const navLinks = [
-    ['Home', '/'],
     ['The Way Back', '/the-way-back'],
-    ['Resources', '/the-way-back/resources'],
     ['Brotherhood', '/the-way-back/brotherhood'],
     ['Contact', '/contact'],
   ]
   return (
     <nav className="nav">
       <div className="container navInner">
-        <a className="brand" href="/"><Compass size={20} /> Morpheus Black</a>
+        <a className="brand" href="/the-way-back"><Compass size={20} /> Morpheus Black</a>
         <button className="menuBtn" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -116,10 +118,10 @@ function AuthorHomePage() {
         <div className="heroGlow" />
         <div className="container bookHeroGrid">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="heroText">
-            <div className="eyebrow"><Compass size={16} /> Author · Brotherhood · The Way Back</div>
+            <div className="eyebrow"><Compass size={16} /> Author of The Way Back</div>
             <h1>Morpheus Black</h1>
-            <p className="subtitle">Books, resources, and brotherhood for men who refuse to stay lost.</p>
-            <p className="lede">Morpheus Black writes about masculinity, self-respect, emotional discipline, relationships, and the long road back to yourself.</p>
+            <p className="subtitle">Direct, practical writing for men rebuilding self-respect, discipline, and emotional command.</p>
+            <p className="lede">Morpheus Black writes at the intersection of masculinity, shame, desire, relationships, and the long road back to the self. His work is built for men who do not need softer slogans — they need a clear mirror, a hard truth, and a practical path they can actually walk.</p>
             <div className="buttonRow heroButtonRow">
               <Button variant="gold" href="/the-way-back">Explore The Way Back <ArrowRight size={18} /></Button>
               <Button variant="outline" href="/the-way-back/resources">Free Resources</Button>
@@ -180,7 +182,7 @@ function BookPage() {
             <p className="subtitle">A field guide for reclaiming your worth, rebuilding your life, and becoming the man who no longer abandons himself.</p>
             <p className="lede">For men who are tired of chasing approval, bleeding their worth into women, calling fear maturity, and living like strangers to their own strength.</p>
             <div className="buttonRow heroButtonRow">
-              <Button variant="gold" href="#">Buy Now on Amazon <ArrowRight size={18} /></Button>
+              <Button variant="gold" href={AMAZON_BOOK_LINK}>Buy Now on Amazon <ArrowRight size={18} /></Button>
               <Button variant="outline" href="/the-way-back/pdf">Get the PDF</Button>
               <Button variant="outline" href="/the-way-back/resources">Free Resources</Button>
               <Button variant="outline" href="/the-way-back/brotherhood">Join the Brotherhood</Button>
@@ -286,14 +288,6 @@ function BookPage() {
 }
 
 function ResourcesPage() {
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    alert('Next step: replace this placeholder with your MailerLite embedded form or form action.')
-  }
-
   return (
     <div className="site">
       <Nav />
@@ -350,16 +344,14 @@ function ResourcesPage() {
               <h2>Get the full Companion Kit sent to your inbox.</h2>
               <p className="finePrint">This signup is optional. The resources on this page are provided to support readers of the book.</p>
             </div>
-            <form className="signupCard" onSubmit={handleSubmit}>
-              <label>First name
-                <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Morpheus" />
-              </label>
-              <label>Email address
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" required />
-              </label>
-              <Button type="submit"><Mail size={18} /> Send me the Companion Kit</Button>
-              <p className="finePrint">By signing up, you agree to receive emails related to The Way Back and its companion resources. You can unsubscribe at any time. Add your Privacy Policy link here.</p>
-            </form>
+            <div className="signupCard embeddedSignup">
+              <iframe
+                src={MAILERLITE_FORM_URL}
+                title="Get the full Companion Kit"
+                className="mailerLiteFrame"
+              />
+              <a className="textLink" href={MAILERLITE_FORM_URL} target="_blank" rel="noreferrer">Open signup form in a new tab <ArrowRight size={15} /></a>
+            </div>
           </div>
         </section>
 
@@ -489,8 +481,51 @@ export default function App() {
   if (path.startsWith('/the-way-back')) return <BookPage />
   if (path.startsWith('/privacy')) return (
     <SimplePage title="Privacy Policy">
-      <p>Replace this placeholder with your full privacy policy before collecting email addresses.</p>
-      <p>At minimum, explain what information you collect, how you use it, which email platform stores it, how users can unsubscribe, and how they can contact you.</p>
+      <p><strong>Effective date:</strong> May 27, 2026</p>
+      <p>This Privacy Policy explains how Morpheus Black collects, uses, and protects information when you visit this website, download resources, join the email list, purchase products, or interact with The Way Back and related offers.</p>
+
+      <h2>Information We Collect</h2>
+      <p>We may collect information you choose to provide, including your name, email address, messages, form responses, and purchase-related details when you request resources, join the newsletter, contact us, or buy a product.</p>
+      <p>We may also collect basic technical information through website tools and hosting providers, such as browser type, device information, referring pages, approximate location, pages visited, and general usage data.</p>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use your information to send requested resources, deliver email updates, respond to messages, provide customer support, improve the website, operate paid products or community offers, and share content related to The Way Back, Morpheus Black, companion resources, newsletters, and the Brotherhood.</p>
+
+      <h2>Email List and Unsubscribing</h2>
+      <p>If you join the email list, your information may be processed by our email service provider, including MailerLite. You can unsubscribe at any time by using the unsubscribe link included in our emails.</p>
+
+      <h2>Payments and Digital Products</h2>
+      <p>If you purchase a product, payment information may be processed by third-party payment platforms such as Amazon, Payhip, Gumroad, Stripe, PayPal, or similar services. We do not intentionally store full payment card details on this website.</p>
+
+      <h2>Third-Party Services</h2>
+      <p>This website may use third-party services for hosting, analytics, email delivery, payment processing, digital downloads, and community access. These services may collect and process information according to their own privacy policies.</p>
+
+      <h2>Cookies and Analytics</h2>
+      <p>This website may use cookies or similar technologies to operate the site, understand how visitors use it, improve performance, and support marketing or analytics. You can adjust cookie settings through your browser.</p>
+
+      <h2>How We Share Information</h2>
+      <p>We do not sell your personal information. We may share information with trusted service providers who help operate the website, email list, downloads, payments, or community. We may also disclose information if required by law, to protect rights or safety, or to prevent misuse of the site.</p>
+
+      <h2>Data Retention</h2>
+      <p>We keep personal information only as long as reasonably necessary for the purposes described in this policy, unless a longer retention period is required or permitted by law.</p>
+
+      <h2>Your Choices</h2>
+      <p>You may unsubscribe from emails at any time. You may also contact us to request access, correction, or deletion of personal information we hold about you, subject to legal and operational limits.</p>
+
+      <h2>Security</h2>
+      <p>We take reasonable steps to protect personal information, but no website, email system, or online service can guarantee complete security.</p>
+
+      <h2>Children</h2>
+      <p>This website and its resources are intended for adults. We do not knowingly collect personal information from children.</p>
+
+      <h2>Educational Disclaimer</h2>
+      <p>The book, website, resources, newsletter, and community are for educational and personal development purposes only. They are not therapy, medical advice, legal advice, financial advice, or crisis support.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. The updated version will be posted on this page with a revised effective date.</p>
+
+      <h2>Contact</h2>
+      <p>For privacy-related questions, contact: support@morpheusblack.com</p>
     </SimplePage>
   )
   if (path.startsWith('/terms')) return (
